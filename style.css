@@ -1,0 +1,13 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+/* #dropzone {
+  padding: 24px;
+  border-style: dashed;
+  width: 400px;
+} */
