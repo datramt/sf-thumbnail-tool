@@ -1,4 +1,6 @@
 let logo, score, dropdownMenu, downloadThumbnail, seriesDescription, sfFont, cnv, txtbg, gradient;
+let scoreRatio, scoreWidth, scoreHeight, heightOffset, widthOffset;
+const ASPECTRATIO = 1920 / 1080;
 
 function preload() {
 
@@ -62,7 +64,7 @@ function gotFile(file) {
   if (file.type === 'image') {
     score = loadImage(file.data, imageLoaded)
   } else {
-    println('Not an image file!');
+    console.log('Not an image file!');
   }
   // console.log(this.file.width());
 }
@@ -92,7 +94,22 @@ function generateCanvasContent() {
 
   //if a score has been dragged onto canvas, display it
   if (score) {
-    image(score, 0, 0, width, height);
+    scoreRatio = score.width / score.height;
+    console.log(scoreRatio);
+    widthOffset = heightOffset = 0;
+    if (scoreRatio >= ASPECTRATIO) {
+      scoreWidth = width;
+      scoreHeight = width / scoreRatio;
+      heightOffset = height / 2 - scoreHeight / 2
+      // image(score, 0, heightOffset, scoreWidth, scoreHeight)
+    } else {
+      scoreHeight = height;
+      scoreWidth = height * scoreRatio;
+      widthOffset = width / 2 - scoreWidth / 2;
+      // image(score, 0, heightOffset, scoreWidth, scoreHeight)
+    }
+    background(255);
+    image(score, widthOffset, heightOffset, scoreWidth, scoreHeight)
     blendMode(MULTIPLY);
   }
   //MULTIPLY colors of gradient with colors of score
