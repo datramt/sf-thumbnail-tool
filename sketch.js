@@ -5,7 +5,7 @@ const ASPECTRATIO = 1920 / 1080;
 function preload() {
 
   gradient = loadImage('gradients/sf-gradient.png')
-  sfFont = loadFont('raleway/Raleway-Regular.ttf')
+  sfFont = loadFont('raleway/Ubuntu-B.ttf')
 
 }
 
