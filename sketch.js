@@ -10,7 +10,7 @@ function preload() {
 }
 
 function setup() {
-  cnv = createCanvas(1900, 1080);
+  cnv = createCanvas(1920, 1080);
   cnv.position(0, 30);
 
   background(80);
